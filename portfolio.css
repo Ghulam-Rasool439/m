@@ -1,0 +1,330 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    position: relative;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.hamburger.close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.hamburger.close span {
+    background-color: transparent;
+}
+
+.hamburger.close span:before,
+.hamburger.close span:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.hamburger.close span:before {
+    transform: rotate(45deg);
+}
+
+.hamburger.close span:after {
+    transform: rotate(-45deg);
+}
+
+/* Fullscreen Menu Overlay */
+.menu-overlay {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.menu-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.menu-overlay ul {
+    list-style: none;
+    text-align: center;
+}
+
+.menu-overlay ul li {
+    margin: 20px 0;
+}
+
+.menu-overlay ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+#cross{
+    display: none;
+}
+
+/* Typing text with a blinking cursor */
+#typing-text {
+    font-size: 2rem;
+    margin-top: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    width: fit-content;
+    animation: blink-cursor 0.75s step-end infinite;
+}
+
+/* Keyframes for blinking cursor */
+@keyframes blink-cursor {
+    50% { border-right-color: transparent; }
+}
+
+/* To hide the cursor after deletion */
+.hide-cursor {
+    border-right: none;
+}
+.about-p{
+    padding: 0 3rem;
+}
+
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+    :root{
+        font-size: 80%;
+    }
+    nav ul {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        background-color: #333;
+        z-index: 1000;
+        width: 40%;
+        padding-top: 3rem;
+        transform: translateX(100%); /* Hidden off-screen */
+        opacity: 0; /* Fully transparent */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        flex-direction: column;
+    }
+    
+    nav ul.active {
+        transform: translateX(0); /* Slide in from the right */
+        opacity: 1; /* Fully visible */
+    }
+    
+    #hamburger {
+        display: flex;
+    }
+    
+    #cross {
+        display: inline; /* Initially hide the cross button */
+        position: absolute;
+        right: 14%;
+        top: 3%;
+        font-size: 20px;
+    }
+    
+    nav ul.active ~ #cross {
+        display: inline; /* Show the cross when menu is active */
+    }
+    
+    nav ul.active ~ #hamburger {
+        display: none; /* Hide the hamburger when menu is active */
+    }
+    
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* Content Padding */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Hero Section */
+#hero {
+    padding: 3rem 0;
+    background: #282c34;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+
+/* Skills Section */
+.skills-section {
+    padding: 4rem 0;
+    background-color: #cfcfcf;
+    text-align: center;
+}
+
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 4rem 0;
+    background-color: white;
+    text-align: center;
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 57%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #282c34;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #444;
+}
+
+/* Footer */
+footer {
+    background-color: #282c34;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Responsive Styling */
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
